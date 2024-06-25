@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.BackTracking;
 
 import java.util.*;
 import java.io.*;

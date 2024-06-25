@@ -1,8 +1,10 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.BackTracking;
 
-import java.util.*;
-import java.io.*;
-public class bj_15650 {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class bj_15652 {
     static int N, M;
     static int[] num;
     static int[] arr;
@@ -19,7 +21,11 @@ public class bj_15650 {
 
         for(int i = start; i < N; i++) {
             arr[count] = num[i];
-            comb(count + 1, i+1);
+
+            // 중복 조합
+            // 그냥 조합은 i+1부터 시작하기에 중복 방지
+            // i부터 함으로써 본인을 다시 추가할 수 있도록 구현
+            comb(count + 1, i);
         }
 
     }

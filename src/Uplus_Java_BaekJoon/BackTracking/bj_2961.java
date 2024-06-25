@@ -1,8 +1,8 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.BackTracking;
 import java.util.*;
 import java.io.*;
 
-public class bj_1961 {
+public class bj_2961 {
 
     static int num;
     static int[] sour;

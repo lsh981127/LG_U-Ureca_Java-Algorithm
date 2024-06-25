@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.Stack;
 
 import java.util.*;
 import java.io.*;

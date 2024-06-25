@@ -1,7 +1,6 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.Recursion;
 
 import java.io.*;
-import java.util.*;
 
 public class bj_17478 {
     static int num;         // 실행 횟수

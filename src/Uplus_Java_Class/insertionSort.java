@@ -2,7 +2,7 @@ package Uplus_Java_Class;
 
 import java.util.Arrays;
 
-public class sortkmp {
+public class insertionSort {
     public static void main(String[] args) {
         int[] a = {30,20,590,1,2,49,4,10};
         for(int i = 1; i < a.length; i++) {

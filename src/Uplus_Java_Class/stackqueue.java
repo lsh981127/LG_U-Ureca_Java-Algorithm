@@ -8,7 +8,7 @@ import java.util.Stack;
 public class stackqueue {
     public static void main(String[] args) {
         Stack<String> stack = new Stack<>();
-        stack.push("강호동");
+        stack.add("강호동");
         System.out.println(stack);
         ArrayDeque<String> realstack = new ArrayDeque<>();      // 스택을 쓸때는 이제는 이거를 쓴다!
 

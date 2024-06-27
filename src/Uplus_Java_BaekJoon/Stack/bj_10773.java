@@ -15,7 +15,7 @@ public class bj_10773 {
                 continue;
             }
             total += val;
-            stack.push(val);
+            stack.add(val);
         }
         System.out.println(total);
 

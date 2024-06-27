@@ -13,8 +13,11 @@ public class KMP {
          */
         String P = "ABABACA";
         int[] F = new int[P.length()];      // LIS? 인가 뭐시기인가
-
+        // F는 Skip 배열
+        // 패턴의 각 요소들이 반복되는 곳을 기록해두는 배열
+        // 이 배열을 활용해서 ㅇ
         System.out.println(Arrays.toString(F));
+
         for(int t=1, p=0; t<P.length(); t++) {
             while(p>0 && P.charAt(t) != P.charAt(p)) p = F[p-1];
             if (P.charAt(t) == P.charAt(p)) F[t] = ++p;

@@ -18,7 +18,7 @@ public class KMP {
         // 이 배열을 활용해서 ㅇ
         System.out.println(Arrays.toString(F));
 
-        for(int t=1, p=0; t<P.length(); t++) {
+        for(int t=1, p=0; t < P.length(); t++) {
             while(p>0 && P.charAt(t) != P.charAt(p)) p = F[p-1];
             if (P.charAt(t) == P.charAt(p)) F[t] = ++p;
             // p를 계속 0으로 보내면 처음부터 비교하는 거 => 브루트포스

@@ -51,12 +51,8 @@ public class bj_9934 {
             if (i*2+1 <= lastIndex) postOrder(i * 2+1);
             System.out.print(nodes[i] + " ");
         }
-
-
-
-
     }
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int size = Integer.parseInt(br.readLine());
         CompleteBinaryTree<Integer> tree = new CompleteBinaryTree<>(size);

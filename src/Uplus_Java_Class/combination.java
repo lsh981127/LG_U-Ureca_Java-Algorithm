@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class combination {
     static int N = 4, R = 2, C = 0;
-    static int[] a = {1,1,1,1};
+    static int[] a = {1,2,3,4};
     static int[] b = new int[R];
     static boolean[] v = new boolean[N];
 

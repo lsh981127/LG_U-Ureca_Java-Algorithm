@@ -8,23 +8,22 @@ public class bj_13305 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int num = Integer.parseInt(br.readLine());
-        int[] distance = new int[num-1];    //
-        int[] city = new int[num-1];          // 근데 마지막 어차피 안쓰지 않나?
-        int distanceTotal = 0;
+        long[] distance = new long[num-1];    //
+        long[] city = new long[num-1];          // 근데 마지막 어차피 안쓰지 않나?
+        long distanceTotal = 0;
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < num-1; i++) {
-            distance[i] = Integer.parseInt(st.nextToken());
+            distance[i] = Long.parseLong(st.nextToken());
             distanceTotal += distance[i];
         }
 
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < num-1; i++) {
-            city[i] = Integer.parseInt(st.nextToken());
+            city[i] = Long.parseLong(st.nextToken());
         }
 
-
-        int min = city[0];
-        int total = distance[0] * min;
+        long min = city[0];
+        long total = distance[0] * min;
         distanceTotal -= distance[0];
         for(int i = 1; i < num-1; i++) {
             if (min > city[i]) {

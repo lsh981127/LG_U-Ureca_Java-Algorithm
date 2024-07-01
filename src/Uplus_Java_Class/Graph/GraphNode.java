@@ -19,7 +19,7 @@ public class GraphNode {
 
         @Override
         public String toString() {
-            return (char)(vertex + 'A') + "->" + link;
+            return vertex + "->" + link;
         }
     }
     /**
@@ -54,7 +54,7 @@ public class GraphNode {
         for(Node a : g) System.out.println(a);
         System.out.println();
 //        dfs(0);
-        bfs(0);
+//        bfs(0);
         br.close();
     }
 

@@ -30,12 +30,12 @@ public class GraphMatrix {
     }
 
 
-    static void bfs(int i) {
+    static void bfs(int k) {
         ArrayDeque<Integer> q = new ArrayDeque<>();
-        v[i] = true;
-        q.offer(i);
+        v[k] = true;
+        q.offer(k);
         while(!q.isEmpty()) {
-            i = q.poll();
+            int i = q.poll();
             System.out.print((char) (i + 'A') + " ");
             for(int j = 0; j < N; j++) {
                 if(g[i][j] == 1 && !v[j]) {

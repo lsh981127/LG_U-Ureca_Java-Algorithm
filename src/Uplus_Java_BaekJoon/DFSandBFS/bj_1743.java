@@ -5,9 +5,7 @@ import java.io.*;
 
 public class bj_1743 {
     static int N, M, K;
-    static List<Integer>[] trash;
     static int[][] trashMatrix;
-    static boolean[] visited;
     static boolean[][] visitedM;
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
@@ -63,12 +61,7 @@ public class bj_1743 {
         M = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
 
-        trash = new List[K];
-        for(int i = 0; i < K; i++) trash[i] = new ArrayList<>();
-
         trashMatrix = new int[N][M];
-
-        visited = new boolean[K];
         visitedM = new boolean[N][M];
 
         for(int i = 0; i < K; i++) {

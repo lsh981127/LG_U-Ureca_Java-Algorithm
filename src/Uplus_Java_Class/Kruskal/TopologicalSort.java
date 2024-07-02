@@ -1,4 +1,4 @@
-package Uplus_Java_Class.MST;
+package Uplus_Java_Class.Kruskal;
 
 import java.io.*;
 import java.util.*;

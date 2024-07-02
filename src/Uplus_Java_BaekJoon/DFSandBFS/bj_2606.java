@@ -8,11 +8,10 @@ public class bj_2606 {
     static boolean[] visited;
     static int total;
 
-    static int bfs(int k) {
+    static void bfs(int k) {
         ArrayDeque<Integer> q = new ArrayDeque<>();
         q.offer(k);
         visited[k] = true;
-        int total = 0;
         while (!q.isEmpty()) {
             int i = q.poll();
             for(int j : network[i]) {
@@ -23,12 +22,10 @@ public class bj_2606 {
                 }
             }
         }
-        return total;
     }
 
     static void dfs(int k) {
         visited[k] = true;
-
         for(int j: network[k]) {
             if(!visited[j]) {;
                 total++;
@@ -61,11 +58,12 @@ public class bj_2606 {
 
         // dfs용
         total = 0;
-        dfs(0);
-        System.out.println(total);
+//        dfs(0);
+//        System.out.println(total);
 
         // bfs용
-//        System.out.println(bfs(0));
+        bfs(0);
+        System.out.println(total);
 
 
     }

@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon.DisjointUnion;
+package Uplus_Java_BaekJoon.DisjointSetandUnion;
 
 import java.util.*;
 import java.io.*;

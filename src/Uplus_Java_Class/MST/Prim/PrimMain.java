@@ -1,8 +1,6 @@
-package Uplus_Java_Class.Prim;
+package Uplus_Java_Class.MST.Prim;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class PrimMain {

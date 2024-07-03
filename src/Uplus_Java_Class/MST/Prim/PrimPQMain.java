@@ -1,4 +1,4 @@
-package Uplus_Java_Class.Prim;
+package Uplus_Java_Class.MST.Prim;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;

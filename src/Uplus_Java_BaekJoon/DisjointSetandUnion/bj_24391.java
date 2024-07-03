@@ -30,9 +30,9 @@ public class bj_24391 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        p = new int[N];
+        p = new int[N+1];
 
-        for(int i = 0; i < N; i++) p[i]=i;
+        for(int i = 0; i < N+1; i++) p[i]=i;
 
         for(int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());

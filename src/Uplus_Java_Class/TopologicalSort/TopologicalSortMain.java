@@ -1,9 +1,9 @@
-package Uplus_Java_Class.Kruskal;
+package Uplus_Java_Class.TopologicalSort;
 
 import java.io.*;
 import java.util.*;
 
-public class TopologicalSort {
+public class TopologicalSortMain {
     static int N, M;
     static List<Integer>[] g;
     static int[] indegree;      // 진입 차수

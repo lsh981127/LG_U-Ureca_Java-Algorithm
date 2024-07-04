@@ -36,16 +36,12 @@ public class PrimPQMain {
         while(!pq.isEmpty()) {
             int[] cur = pq.poll();
             System.out.print(cur[0] + " ");
-            int min = cur[1];
-            int minVertex = cur[0];
-
-            if(v[minVertex]) continue;          // 방문 여부를 검사해서 끊어줌으로써 사이클이 안만들어지도록!
-            v[minVertex] = true;
-            sum += min;
+            if(v[cur[0]]) continue;          // 방문 여부를 검사해서 끊어줌으로써 사이클이 안만들어지도록!
+            v[cur[0]] = true;
+            sum += cur[1];
             if(cnt++==N-1) break;
-            for(int[] j: g[minVertex]) {
-                if(!v[j[0]] && minEdge[j[0]] > j[1]) {
-                    minEdge[j[0]] = j[1];
+            for(int[] j: g[cur[0]]) {
+                if(!v[j[0]]) {
                     pq.offer(j);
                 }
             }

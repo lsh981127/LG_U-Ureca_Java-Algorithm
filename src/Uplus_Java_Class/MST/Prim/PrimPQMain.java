@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PrimPQMain {
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("src/Uplus_Java_Class/Prim/PrimInput.txt"));
+        System.setIn(new FileInputStream("src/Uplus_Java_Class/MST/Prim/PrimInput.txt"));
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
@@ -31,10 +31,11 @@ public class PrimPQMain {
 
         int sum = 0, cnt = 0;
         minEdge[0] = 0;
-        pq.offer(new int[]{0, 0});   // 정점, 비용
+        pq.offer(new int[]{0, minEdge[0]});   // 정점, 비용
 
         while(!pq.isEmpty()) {
             int[] cur = pq.poll();
+            System.out.print(cur[0] + " ");
             int min = cur[1];
             int minVertex = cur[0];
 

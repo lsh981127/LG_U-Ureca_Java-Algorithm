@@ -3,7 +3,7 @@ package Uplus_Java_BaekJoon.MST;
 import java.io.*;
 import java.util.*;
 
-public class bj_1922_Prim {
+public class bj_1922_PrimPQ {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -26,32 +26,19 @@ public class bj_1922_Prim {
         }
 
         int sum = 0, count = 0;     // sum : 비용용도, count : 종료용 간선 갯수 측정용
-        int[] w = new int[N];
-        for(int i = 0; i < N; i++) w[i] = Integer.MAX_VALUE;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> Integer.compare(o1[1], o2[1]));
 
-//        for(int i = 0; i < N; i++) {
-//            for(int[] k: li[i]) {
-//                System.out.print(Arrays.toString(k) + " ");
-//            }
-//            System.out.println();
-//        }
+        pq.offer(li[0].get(0));
 
-        w[0] = 0;
-        for(int i = 0; i < N; i++) {
-            int minVertex = -1;
-            int min = Integer.MAX_VALUE;
-            for(int j = 0; j < N; j++) {
-                if(!visited[j] && min > w[j]) {
-                    min = w[j];
-                    minVertex = j;
-                }
-            }
-            visited[minVertex] = true;
-            sum += min;
+        while(!pq.isEmpty()) {
+            int[] temp = pq.poll();
+            System.out.println("노드번호 : " + temp[0] + " ");
+            visited[temp[0]] = true;
+            sum += temp[1];
             if(count++ == N - 1) break;
-            for(int[] k: li[minVertex]) {
-                if(!visited[k[0]] && w[k[0]] > k[1]) {
-                    w[k[0]] = k[1];
+            for(int[] k: li[temp[0]]) {
+                if(!visited[k[0]]) {
+                    pq.offer(k);
                 }
             }
         }

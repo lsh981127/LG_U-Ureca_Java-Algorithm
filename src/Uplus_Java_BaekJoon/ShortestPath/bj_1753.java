@@ -52,10 +52,6 @@ public class bj_1753 {
                 continue;
             }
             System.out.println(dist[i]);
-
-
         }
-
-
     }
 }

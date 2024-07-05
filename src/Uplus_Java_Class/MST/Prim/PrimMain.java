@@ -5,7 +5,7 @@ import java.util.*;
 
 public class PrimMain {
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("src/Uplus_Java_Class/Prim/PrimInput.txt"));
+        System.setIn(new FileInputStream("src/Uplus_Java_Class/MST/Prim/PrimInput.txt"));
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
@@ -22,14 +22,13 @@ public class PrimMain {
         };
 
         boolean[] v = new boolean[N];
-        int[] minEdge = new int[N];                  // 현재 진행하는 상황에서 index 번호 노드까지의 최소 가중치를 기록하는 배열
-//        Arrays.fill(minEdge, Integer.MAX_VALUE/2); // 메모리 터지는 거 방지하기 위해 2로 나눔
+        int[] minEdge = new int[N];                  // 각 노드별 가지는 최소 가치의 간선 기록용
         for(int i = 0; i < N; i++) minEdge[i] = Integer.MAX_VALUE;
 
         int sum = 0, cnt = 0;
         minEdge[0] = 0;
         for(int i = 0; i < N; i++) {
-            int minVertex = -1;                 // 최소 가치를 가지는 노드 기록 변수
+            int minVertex = -1;                 // 현재 간선의 가치가 최소인 Index
             int min = Integer.MAX_VALUE;        // 최소 가치
             for(int j = 0; j < N; j++) {
                 if(!v[j] && min > minEdge[j]) {     // 방문을 안했고 현재 해당 노드까지 최소 가중치보다 더 작으면
@@ -38,6 +37,7 @@ public class PrimMain {
                 }
             }
             v[minVertex] = true;
+            System.out.println("minVertex : " + minVertex + ", min : " + min);
             sum += min;
 
             if(cnt++ == N-1) break;
@@ -48,6 +48,7 @@ public class PrimMain {
             }
 //            System.out.println(Arrays.toString(minEdge));
         }
+        System.out.println(Arrays.toString(minEdge));
         System.out.println(sum);
         sc.close();
 

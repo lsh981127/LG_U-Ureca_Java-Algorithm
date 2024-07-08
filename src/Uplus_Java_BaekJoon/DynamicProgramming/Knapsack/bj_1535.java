@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon.DynamicProgramming;
+package Uplus_Java_BaekJoon.DynamicProgramming.Knapsack;
 
 import java.util.*;
 import java.io.*;

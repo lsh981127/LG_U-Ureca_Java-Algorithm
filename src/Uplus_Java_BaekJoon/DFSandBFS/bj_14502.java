@@ -5,21 +5,56 @@ import java.io.*;
 
 public class bj_14502 {
     static int N, M;
-    static int count;
     static boolean[][] visited;
     static int[][] graph;
-    static int[][] test;
 
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
     static List<int[]> virus;
     static List<int[]> zero;
 
-    static int bfs(int x, int y, int type) {
+    static int[][] wall = new int[3][2];
+    static int safeNum = 0;
+    static int virusNum = 0;
+    static int max = -1;
+
+    static void comb(int cnt, int start) {
+        if(cnt == 3) {
+            int numV = 0;
+            for(int i = 0; i < 3; i++) {
+                graph[wall[i][0]][wall[i][1]] = 1;
+            }
+
+            for(int[] v: virus)
+                numV += bfs(v[0], v[1]);
+
+            int safeCount = (safeNum - 3) - (numV - virusNum);
+
+            if(max < safeCount) {
+                max = safeCount;
+                System.out.println("Max : "+  max + " numV : " + numV);
+            }
+
+            visited = new boolean[N][M];
+            for(int i = 0; i < 3; i++) {
+                graph[wall[i][0]][wall[i][1]] = 0;
+            }
+            return ;
+        }
+
+        for(int i = start; i < zero.size(); i++) {
+            wall[cnt][0] = zero.get(i)[0];
+            wall[cnt][1] = zero.get(i)[1];
+            comb(cnt+1, start+1);
+        }
+    }
+
+
+    static int bfs(int x, int y) {
         ArrayDeque<int[]> q = new ArrayDeque<>();
-        int tempCount = 0;
+        if(visited[x][y]) return 0;
         visited[x][y] = true;
-        tempCount++;
+        int tempCount = 1;
         q.offer(new int[]{x, y});
         while(!q.isEmpty()) {
             int[] temp = q.poll();
@@ -29,67 +64,15 @@ public class bj_14502 {
                 int rx = nx + dx[i];
                 int ry = ny + dy[i];
                 if(0 <= rx && rx < N && 0 <= ry && ry < M && !visited[rx][ry]) {
-//                    if(graph[rx][ry] != 1) {
-//                        visited[rx][ry] = true;
-//                        tempCount++;
-//                        q.offer(new int[]{rx,ry});
-//                    }
-
-                    if (type == 2) {
-                        if(test[rx][ry] != 1) {
-                            // 벽만 아니면 지나가는 거지
-                            visited[rx][ry] = true;
-                            tempCount++;
-                            q.offer(new int[]{rx,ry});
-                        }
-                    } else {
-                        if(test[rx][ry] == 1) {
-                            visited[rx][ry] = true;
-                            q.offer(new int[]{rx,ry});
-                        }
-                        else if(test[rx][ry] == 0) {
-                            // 벽만 아니면 지나가는 거지
-                            visited[rx][ry] = true;
-                            tempCount++;
-                            q.offer(new int[]{rx,ry});
-                        }
+                    if(graph[rx][ry] != 1) {
+                        visited[rx][ry] = true;
+                        tempCount++;
+                        q.offer(new int[]{rx,ry});
                     }
                 }
             }
         }
         return tempCount;
-    }
-
-    static void dfs(int x, int y, int cnt) {
-        if(cnt == 3) {
-            for(int[] v: virus)
-                bfs(v[0], v[1], 2);
-
-            int temp = 0;
-            for(int[] z:zero)
-                temp += bfs(z[0], z[1], 0);
-
-            if(count < temp) count = temp;
-            visited = new boolean[N][M];
-            for(int i = 0; i < N; i++) {
-                for(int j = 0; j < M; j++) {
-                    test[i][j] = graph[i][j];
-                }
-            }
-        }
-
-        visited[x][y] = true;
-        for(int i = 0; i < 4; i++) {
-            int rx = x + dx[i];
-            int ry = y + dy[i];
-            if(0 <= rx && rx < N && 0 <= ry && ry < M && !visited[x][y]) {
-                if(test[rx][ry] == 0) {
-                    test[rx][ry] = 1;
-                    dfs(rx, ry, cnt + 1);
-                    test[rx][ry] = 0;
-                }
-            }
-        }
     }
 
     public static void main(String[] args) throws Exception{
@@ -100,7 +83,6 @@ public class bj_14502 {
         M = Integer.parseInt(st.nextToken());
         visited = new boolean[N][M];
         graph = new int[N][M];
-        test = new int[N][M];
 
         virus = new ArrayList<>();
         zero = new ArrayList<>();
@@ -110,18 +92,21 @@ public class bj_14502 {
             for(int j = 0 ; j < M; j++) {
                 int temp = Integer.parseInt(st.nextToken());
                 graph[i][j] = temp;
-                test[i][j] = temp;
-                if(graph[i][j] == 2) virus.add(new int[]{i,j});
-                else if(graph[i][j] == 0) zero.add(new int[]{i,j});
+                if(graph[i][j] == 2) {
+                    virus.add(new int[]{i, j});
+                    virusNum++;
+                }
+                else if(graph[i][j] == 0) {
+                    zero.add(new int[]{i,j});
+                    safeNum++;
+                }
             }
         }
+        comb(0, 0);
 
-        // 1. 벽 설치  => 1에 대해서 어떻게 설치를 하는 게 좋을까?
-        // 2. 바이러스 전파 = > bfs 돌리고
-        // 3. 0 갯수 측정
-
-        dfs(zero.get(0)[0], zero.get(0)[1], 0);
-        System.out.println(count);
+        System.out.println(safeNum);
+        System.out.println(virusNum);
+        System.out.println(max);
 
 
 

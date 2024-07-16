@@ -32,7 +32,7 @@ public class bj_18870 {
             sb.append(hm.get(i)).append(" ");
         }
 
-        System.out.print(sb);
+        System.out.println(sb);
         br.close();
 
     }

@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.Sort;
 import java.util.*;
 import java.io.*;
 public class bj_18870 {

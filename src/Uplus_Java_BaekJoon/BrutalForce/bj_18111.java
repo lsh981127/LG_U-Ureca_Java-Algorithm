@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.BrutalForce;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

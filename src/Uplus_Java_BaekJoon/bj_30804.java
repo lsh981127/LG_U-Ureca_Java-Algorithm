@@ -15,7 +15,7 @@ public class bj_30804 {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-
+        // 이걸 우째해야하나
 
         br.close();
     }

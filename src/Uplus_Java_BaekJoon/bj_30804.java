@@ -18,6 +18,7 @@ public class bj_30804 {
         // 이걸 우째해야하나
 
         br.close();
+
     }
 
 

@@ -2,35 +2,44 @@ package Uplus_Java_BaekJoon.TwoPointer;
 import java.util.*;
 import java.io.*;
 public class bj_30804 {
-    public static void main(String[] args) throws Exception{
+    static int n;
+    static int[] tanhuru, cur;
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
-
-        int N = Integer.parseInt(br.readLine());
-        int[] fruit = new int[N];
-        st = new StringTokenizer(br.readLine(), " ");
-        for(int i = 0; i < N; i++){
-            fruit[i] = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(br.readLine());
+        int max = 0;
+        tanhuru = new int[n];
+        st = new StringTokenizer(br.readLine());
+        cur = new int[10];
+        for(int i = 0; i < n; i++){
+            tanhuru[i] = Integer.parseInt(st.nextToken());
         }
 
-        int start = 0, end = 0, max = 0, count = 0;
-        int f1 = fruit[start], f2 = fruit[end];
+        int left = 0;
+        int right = 0;
 
-        while(end < N) {
-            if(fruit[end] != f1 && fruit[end] != f2 && f1 != f2) { // 2가지 종류랑 다르면
-                max = Math.max(max, count);
-                count--;
-                f1 = f2;
-                start++;
+        while(right < n){
+            cur[tanhuru[right++]]++;
+            while(10 - count(cur) > 2){
+                cur[tanhuru[left++]]--;
             }
-            f2 = fruit[end];
-            end++;
-            count++;
+            max = Math.max(max, right-left);
         }
-        max = Math.max(max, count);
 
-        System.out.println(max);
+        bw.write(String.valueOf(max));
+        bw.flush();
+        bw.close();
         br.close();
-
+    }
+    public static int count(int[] arr){
+        int cnt = 0;
+        for(int i : arr){
+            if(i == 0){
+                cnt++;
+            }
+        }
+        return cnt;
     }
 }

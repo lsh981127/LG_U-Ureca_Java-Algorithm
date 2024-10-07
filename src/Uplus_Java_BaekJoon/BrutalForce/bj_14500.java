@@ -1,0 +1,63 @@
+package Uplus_Java_BaekJoon.BrutalForce;
+import java.util.*;
+import java.io.*;
+
+public class bj_14500 {
+    static int val = 0;
+    static int[][] graph;
+    static int[][] visited;
+    static int[] dx = {1, -1, 0 ,0};
+    static int[] dy = {0, 0, 1 ,-1};
+    static int N, M;
+    public static void main(String[] args) throws Exception{
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+
+        graph = new int[N][M];
+        for(int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            for(int j = 0; j < M; j++) {
+                graph[i][j] = Integer.parseInt(st.nextToken());
+            }
+        }
+
+        visited = new int[N][M];
+        for(int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                visited[i][j] = 1;
+                bfs(i, j, 1, graph[i][j]);
+                visited[i][j] = 0;
+            }
+        }
+    }
+
+    public static void bfs(int x, int y, int cnt, int sum) {
+        if(cnt == 4) {
+            if(sum > val) {
+                val = sum;
+            }
+            return;
+        }
+
+        for(int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(visited[nx][ny] == 1) continue;
+            if(0 > nx || nx >= N || 0 > ny || ny >= M) continue;
+
+            if(cnt == 2) {
+                
+            }
+
+
+        }
+
+
+    }
+
+}

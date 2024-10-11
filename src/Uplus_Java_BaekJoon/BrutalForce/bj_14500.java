@@ -34,6 +34,8 @@ public class bj_14500 {
                 visited[i][j] = 0;
             }
         }
+
+        System.out.println(val);
     }
 
     public static void bfs(int x, int y, int cnt, int sum) {
@@ -47,13 +49,23 @@ public class bj_14500 {
         for(int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
-            if(visited[nx][ny] == 1) continue;
-            if(0 > nx || nx >= N || 0 > ny || ny >= M) continue;
+
+            if(0 > nx || nx >= N || 0 > ny || ny >= M)   // 이게 먼저 와야 visited에 index 에러 발생 방지
+                // nx,ny가 0보다 작거나 N,M 보다 클 수 있으니
+                continue;
+            if(visited[nx][ny] == 1)
+                continue;
+
 
             if(cnt == 2) {
-                
+                visited[nx][ny] = 1;
+                bfs(x, y, cnt+1, sum + graph[nx][ny]);
+                visited[nx][ny] = 0;
             }
 
+            visited[nx][ny] = 1;
+            bfs(nx, ny, cnt+1, sum + graph[nx][ny]);
+            visited[nx][ny] = 0;
 
         }
 

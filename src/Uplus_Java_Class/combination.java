@@ -21,6 +21,7 @@ public class combination {
         }
         // cnt 는 현재 R개 중에 몇 개를 진행하고 있는지를 판단하는 것
         // start 는 어느 index부터 시작하는지
+
     }
 
 

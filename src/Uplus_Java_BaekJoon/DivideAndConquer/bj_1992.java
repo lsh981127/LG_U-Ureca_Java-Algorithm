@@ -1,6 +1,5 @@
-package Uplus_Java_BaekJoon.DiverAndConquer;
+package Uplus_Java_BaekJoon.DivideAndConquer;
 
-import java.util.*;
 import java.io.*;
 
 

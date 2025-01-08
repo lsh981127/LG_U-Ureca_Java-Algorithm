@@ -17,29 +17,29 @@ public class bj_12865 {
         }
 
 
-//        int[][] dp = new int[N+1][max_weight+1];   // 행 : i번째 물건까지 고려했을 때, 열 : j가 최대 무게였을 때, 값 : 최적의 가치
-//
-//        for(int i = 1; i < N+1; i++) {
-//            for(int j = 1; j < max_weight+1; j++) {
-//                //
-//                if(stuffs[i][0] > j) {  // i번째 물건의 무게가 j 무게보다 커서 못 넣는 경우
-//                    dp[i][j] = dp[i-1][j];  // i-1번째 무게 값 그대로 가져오기
-//                } else {
-//                    // i번째 물건을 넣을 수 있을떄!!
-//                    /**
-//                     * 이제, 기존 i-1번째에서 j 무게까지의 최적값([i-1][j]) VS 지금 물건을 넣었을 때 최적값을 비교하는 거야
-//                     * i-1번째에서 j 무게까지의 최적값 = dp[i-1][j]
-//                     *
-//                     * 지금 물건을 넣었을 떄 최적값 = i번째 물건의 무게를 뻈을 때 최적값 + i번째 가치
-//                     *                       = dp[i-1][j - i번째 물건의 무게) + i번째 가치
-//                     *                       = dp[i-1][j - stuffs[i][0]) + stuffs[i][1]
-//                     */
-//
-//                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - stuffs[i][0]] + stuffs[i][1]);
-//                }
-//            }
-//        }
-//        System.out.println(dp[N][max_weight]);
+        int[][] dp = new int[N+1][max_weight+1];   // 행 : i번째 물건까지 고려했을 때, 열 : j가 최대 무게였을 때, 값 : 최적의 가치
+
+        for(int i = 1; i < N+1; i++) {
+            for(int j = 1; j < max_weight+1; j++) {
+                //
+                if(stuffs[i][0] > j) {  // i번째 물건의 무게가 j 무게보다 커서 못 넣는 경우
+                    dp[i][j] = dp[i-1][j];  // i-1번째 무게 값 그대로 가져오기
+                } else {
+                    // i번째 물건을 넣을 수 있을떄!!
+                    /**
+                     * 이제, 기존 i-1번째에서 j 무게까지의 최적값([i-1][j]) VS 지금 물건을 넣었을 때 최적값을 비교하는 거야
+                     * i-1번째에서 j 무게까지의 최적값 = dp[i-1][j]
+                     *
+                     * 지금 물건을 넣었을 떄 최적값 = i번째 물건의 무게를 뻈을 때 최적값 + i번째 가치
+                     *                       = dp[i-1][j - i번째 물건의 무게) + i번째 가치
+                     *                       = dp[i-1][j - stuffs[i][0]) + stuffs[i][1]
+                     */
+
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - stuffs[i][0]] + stuffs[i][1]);
+                }
+            }
+        }
+        System.out.println(dp[N][max_weight]);
 
         /**
          * 2차원 배열이 아닌 1차원 배열로 처리하는 방법

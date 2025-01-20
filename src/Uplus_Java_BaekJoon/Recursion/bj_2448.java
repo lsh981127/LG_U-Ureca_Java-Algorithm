@@ -1,4 +1,4 @@
-package Uplus_Java_BaekJoon;
+package Uplus_Java_BaekJoon.Recursion;
 
 import java.io.*;
 import java.util.*;
